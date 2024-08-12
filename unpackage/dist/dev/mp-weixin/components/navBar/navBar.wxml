@@ -1,0 +1,1 @@
+<view> 组件测试 <view>组件的name：{{a}}</view><view>组件的content：{{b}}</view><slot></slot><button bindtap="{{c}}">修改content</button></view>

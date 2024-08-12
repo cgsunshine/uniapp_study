@@ -1,0 +1,1 @@
+<view class="content"> 首页 <nav-bar wx:if="{{b}}" u-s="{{['d']}}" bindchangeData="{{a}}" u-i="349df6b6-0" bind:__l="__l" u-p="{{b}}"><view>我是插槽值</view></nav-bar></view>
