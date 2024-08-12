@@ -3,7 +3,7 @@
 		首页
 		
 		<navBar name="navBar组件"  :content="data" @changeData="changeData">
-			<view>我是插槽值11</view>
+			<view>我是插槽值</view>
 		</navBar>
 		
 		<navCC/>
