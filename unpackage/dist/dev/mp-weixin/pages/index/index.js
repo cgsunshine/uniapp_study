@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const common_assets = require("../../common/assets.js");
 if (!Array) {
   const _easycom_navBar2 = common_vendor.resolveComponent("navBar");
   _easycom_navBar2();
@@ -11,17 +12,18 @@ if (!Math) {
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const data = common_vendor.ref("动态数据");
-    const changeData = (val) => {
-      data.value = val;
-    };
+    common_vendor.ref("动态数据");
+    const app = getApp();
+    common_vendor.onLoad(() => {
+      app.globalData.utils.getUserInfo();
+    });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.o(changeData),
-        b: common_vendor.p({
-          name: "navBar组件",
-          content: data.value
-        })
+        a: common_vendor.p({
+          isHome: true
+        }),
+        b: common_assets._imports_0,
+        c: common_assets._imports_1
       };
     };
   }

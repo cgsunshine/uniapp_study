@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "uni-app",
+  "navigationBarTitleText": "search",
   "navigationStyle": "custom",
   "usingComponents": {
     "nav-bar": "../../components/navBar/navBar"

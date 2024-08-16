@@ -1,6 +1,6 @@
 <template>
 	<view>
-		component 组件
+		<navBar/>
 	</view>
 </template>
 

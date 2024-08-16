@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
+const common_js_utils = require("./common/js/utils.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/order/index.js";
   "./pages/user/index.js";
+  "./pages/search/index.js";
 }
 const _sfc_main = {
   onLaunch: function() {
@@ -15,6 +17,9 @@ const _sfc_main = {
   },
   onHide: function() {
     console.log("App Hide");
+  },
+  globalData: {
+    utils: common_js_utils.Utils
   }
 };
 function createApp() {

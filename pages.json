@@ -3,7 +3,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -20,6 +21,14 @@
 			{
 				"navigationBarTitleText" : "",
 				"navigationBarBackgroundColor" : "#FFFFFF"
+			}
+		},
+		{
+			"path" : "pages/search/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "search",
+				"navigationStyle": "custom"
 			}
 		}
 	],
