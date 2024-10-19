@@ -1,7 +1,17 @@
 
-page{
+page {
 		background: #fff;
 }
-
-	
-	
+.index-swiper {
+		padding: 20rpx 20rpx 0 20rpx;
+		overflow: hidden;
+}
+.index-swiper swiper {
+		height: 320rpx;
+		overflow: hidden;
+		border-radius: 10rpx;
+}
+.index-swiper swiper image{
+		width: 100%;
+		height: 100%;
+}
