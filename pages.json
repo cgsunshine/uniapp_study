@@ -30,6 +30,13 @@
 				"navigationBarTitleText" : "search",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path" : "pages/hospital/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"tabBar": {

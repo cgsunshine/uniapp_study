@@ -14,6 +14,8 @@ const _sfc_main = {
   setup(__props) {
     const app = getApp();
     const slides = common_vendor.ref([]);
+    const nav2s = common_vendor.ref([]);
+    common_vendor.ref([]);
     common_vendor.onLoad(() => {
       app.globalData.utils.getUserInfo();
       app.globalData.utils.request({
@@ -27,13 +29,26 @@ const _sfc_main = {
               aid: id
             },
             success: ({ data }) => {
-              console.log("111111111111");
               slides.value = data.slides;
+              nav2s.value = data.nav2s;
+              console.log(nav2s);
             }
           });
         }
       });
     });
+    const onNav2Tap = (e) => {
+      console.log(e);
+      console.log(common_vendor.toRaw(nav2s.value));
+      console.log(e.currentTarget.dataset);
+      const nav = common_vendor.toRaw(nav2s.value)[e.currentTarget.dataset.index];
+      console.log(nav);
+      if (nav.stype == 1) {
+        common_vendor.index.navigateTo({
+          url: nav.stype_link
+        });
+      }
+    };
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: common_vendor.p({
@@ -48,6 +63,17 @@ const _sfc_main = {
             a: item.pic_image_url,
             b: index,
             c: index
+          };
+        })
+      } : {}, {
+        f: nav2s.value && nav2s.value.length > 0
+      }, nav2s.value && nav2s.value.length > 0 ? {
+        g: common_vendor.f(nav2s.value, (item, index, i0) => {
+          return {
+            a: item.pic_image_url,
+            b: index,
+            c: common_vendor.o(onNav2Tap, index),
+            d: index
           };
         })
       } : {});
