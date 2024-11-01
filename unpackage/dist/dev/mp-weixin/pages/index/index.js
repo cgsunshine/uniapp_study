@@ -15,7 +15,8 @@ const _sfc_main = {
     const app = getApp();
     const slides = common_vendor.ref([]);
     const nav2s = common_vendor.ref([]);
-    common_vendor.ref([]);
+    const nav4s = common_vendor.ref([]);
+    const hospitals = common_vendor.ref([]);
     common_vendor.onLoad(() => {
       app.globalData.utils.getUserInfo();
       app.globalData.utils.request({
@@ -31,6 +32,8 @@ const _sfc_main = {
             success: ({ data }) => {
               slides.value = data.slides;
               nav2s.value = data.nav2s;
+              nav4s.value = data.navs;
+              hospitals.value = data.hospitals;
               console.log(nav2s);
             }
           });
@@ -38,16 +41,25 @@ const _sfc_main = {
       });
     });
     const onNav2Tap = (e) => {
-      console.log(e);
-      console.log(common_vendor.toRaw(nav2s.value));
-      console.log(e.currentTarget.dataset);
       const nav = common_vendor.toRaw(nav2s.value)[e.currentTarget.dataset.index];
-      console.log(nav);
+      jump(nav);
+    };
+    const onNav4Tap = (e) => {
+      const nav = common_vendor.toRaw(nav4s.value)[e.currentTarget.dataset.index];
+      jump(nav);
+    };
+    const jump = (nav) => {
       if (nav.stype == 1) {
         common_vendor.index.navigateTo({
           url: nav.stype_link
         });
       }
+    };
+    const toHospital = (e) => {
+      console.log("e.currentTarget.dataset.hid", e.currentTarget.dataset.hid);
+      common_vendor.index.navigateTo({
+        url: "/pages/hospital/index?hid=" + e.currentTarget.dataset.hid
+      });
     };
     return (_ctx, _cache) => {
       return common_vendor.e({
@@ -76,7 +88,33 @@ const _sfc_main = {
             d: index
           };
         })
-      } : {});
+      } : {}, {
+        h: nav4s.value && nav4s.value.length > 0
+      }, nav4s.value && nav4s.value.length > 0 ? {
+        i: common_vendor.f(nav4s.value, (item, index, i0) => {
+          return {
+            a: item.pic_image_url,
+            b: common_vendor.t(item.title),
+            c: common_vendor.s("color:" + (item.tcolor ? item.tcolor : "")),
+            d: index,
+            e: common_vendor.o(onNav4Tap, index),
+            f: index
+          };
+        })
+      } : {}, {
+        j: common_vendor.f(hospitals.value, (item, index, i0) => {
+          return {
+            a: item.avatar ? item.avatar_url : "../../static/resource/images/avatar_def.png",
+            b: common_vendor.t(item.name),
+            c: common_vendor.t(item.rank),
+            d: common_vendor.t(item.label),
+            e: common_vendor.t(item.intro),
+            f: item.id,
+            g: item.id,
+            h: common_vendor.o(toHospital, item.id)
+          };
+        })
+      });
     };
   }
 };

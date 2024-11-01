@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<navBar :isHome="true"></navBar>
-		<view style="margin-top: 130rpx">
+		<view style="margin-top: 200rpx">
 			<view class="weui-cell" style="background: #fff9eb">
 				<view class="weui-cell__hd">
 					<image src="/static/resource/images/ic_myapp.png" style="display: block; width: 40rpx; height: 40rpx; margin-right: 14rpx"></image>
@@ -23,14 +23,49 @@
 				</block>
 			</swiper>
 		</view>
+
 		<view v-if="nav2s && nav2s.length > 0" class="nav2-list">
 			<block v-for="(item, index) in nav2s" :key="index">
-				<view calss="nav2-item" :data-index="index" @click="onNav2Tap">
+				<view class="nav2-item" :data-index="index" @click="onNav2Tap">
 					<view class="nav2-pic">
-						<image :src="item.pic_image_url" mod="widthFix"></image>
+						<image :src="item.pic_image_url"></image>
 					</view>
 				</view>
 			</block>
+		</view>
+
+		<view v-if="nav4s && nav4s.length > 0" class="nav-list">
+			<block v-for="(item, index) in nav4s" :key="index">
+				<view class="nav-item" :data-index="index" @click="onNav4Tap">
+					<view class="nav-pic"><image :src="item.pic_image_url"></image></view>
+					<view class="nav-text" :style="'color:' + (item.tcolor ? item.tcolor : '')">{{ item.title }}</view>
+				</view>
+			</block>
+		</view>
+		
+		<view class="weui-cells hosp-list">
+			<view class="weui-cell hosp-item weui-cell_access"
+				v-for="(item,index) in hospitals"
+				:key="item.id"
+				:data-hid="item.id"
+				@click="toHospital"
+			>
+				<view class="weui-cell__hd">
+					<image class="hosp-avatar" mode="aspectFill" :src="item.avatar ? item.avatar_url : '../../static/resource/images/avatar_def.png'"></image>
+				</view>
+				<view class="weui-cell__bd">
+					<view>
+						<text class="hosp-name">{{item.name}}</text>
+					</view>
+					<view class = "hosp-line">
+						<text class="hosp-rank">{{item.rank}}</text>
+						<text class="hosp-label">{{item.label}}</text>
+					</view>
+					<view class="hosp-line">
+						<text class="hosp-intro">{{item.intro}}</text>
+					</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -45,6 +80,8 @@ const slides = ref([]);
 const nav2s = ref([]);
 //快捷入口4
 const nav4s = ref([]);
+//医院列表
+const hospitals = ref([]);
 
 onLoad(() => {
 	app.globalData.utils.getUserInfo();
@@ -61,6 +98,8 @@ onLoad(() => {
 				success: ({ data }) => {
 					slides.value = data.slides;
 					nav2s.value = data.nav2s;
+					nav4s.value = data.navs;
+					hospitals.value = data.hospitals;
 					console.log(nav2s);
 				}
 			});
@@ -69,18 +108,31 @@ onLoad(() => {
 });
 
 const onNav2Tap = (e) => {
-	console.log(e);
-	console.log(toRaw(nav2s.value));
-	console.log(e.currentTarget.dataset)
 	const nav = toRaw(nav2s.value)[e.currentTarget.dataset.index];
-	console.log(nav);
+	jump(nav, 'nav2');
+};
 
+const onNav4Tap = (e) => {
+	const nav = toRaw(nav4s.value)[e.currentTarget.dataset.index];
+	// console.log('1111');
+	// console.log(e);
+	jump(nav, 'nav4');
+};
+
+const jump = (nav) => {
 	//判断是否为内部链接
 	if (nav.stype == 1) {
 		uni.navigateTo({
 			url: nav.stype_link
 		});
 	}
+};
+
+const toHospital = (e) => {
+	console.log("e.currentTarget.dataset.hid",e.currentTarget.dataset.hid)
+	uni.navigateTo({
+		url:'/pages/hospital/index?hid='+e.currentTarget.dataset.hid,
+	})
 };
 </script>
 
@@ -127,7 +179,10 @@ page {
 }
 .nav2-pic image {
 	display: block;
-	width: 100%;
+	/* margin: 0 auto; */
+	/* width: 100%; */
+	width: 350rpx;
+	height: 190rpx;
 }
 .nav-list::after {
 	content: '';
