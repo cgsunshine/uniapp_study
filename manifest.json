@@ -54,7 +54,14 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {},
+		"requiredPrivateInfos": [
+		    "getLocation",
+		    "onLocationChange",
+		    "startLocationUpdateBackground",
+		    "chooseAddress"
+		  ]
     },
     "mp-alipay" : {
         "usingComponents" : true

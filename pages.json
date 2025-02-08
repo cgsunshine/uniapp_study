@@ -44,6 +44,13 @@
 			{
 				"navigationBarTitleText" : "填写服务订单"
 			}
+		},
+		{
+			"path" : "pages/clients/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"tabBar": {
