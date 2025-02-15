@@ -22,7 +22,7 @@ const _sfc_main = {
       app.globalData.utils.request({
         url: "/app/init",
         success: (res) => {
-          console.log(res);
+          common_vendor.index.__f__("log", "at pages/index/index.vue:91", res);
           const { id } = res.data.area;
           app.globalData.utils.request({
             url: "/Index/index",
@@ -34,7 +34,7 @@ const _sfc_main = {
               nav2s.value = data.nav2s;
               nav4s.value = data.navs;
               hospitals.value = data.hospitals;
-              console.log(nav2s);
+              common_vendor.index.__f__("log", "at pages/index/index.vue:103", nav2s);
             }
           });
         }
@@ -56,7 +56,7 @@ const _sfc_main = {
       }
     };
     const toHospital = (e) => {
-      console.log("e.currentTarget.dataset.hid", e.currentTarget.dataset.hid);
+      common_vendor.index.__f__("log", "at pages/index/index.vue:132", "e.currentTarget.dataset.hid", e.currentTarget.dataset.hid);
       common_vendor.index.navigateTo({
         url: "/pages/hospital/index?hid=" + e.currentTarget.dataset.hid
       });
@@ -67,7 +67,7 @@ const _sfc_main = {
           isHome: true
         }),
         b: common_assets._imports_0,
-        c: common_assets._imports_1,
+        c: common_assets._imports_0$1,
         d: slides.value && slides.value.length > 0
       }, slides.value && slides.value.length > 0 ? {
         e: common_vendor.f(slides.value, (item, index, i0) => {
@@ -119,3 +119,4 @@ const _sfc_main = {
   }
 };
 wx.createPage(_sfc_main);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/index/index.js.map

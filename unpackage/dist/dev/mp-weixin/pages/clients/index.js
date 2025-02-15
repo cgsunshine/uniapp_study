@@ -20,7 +20,7 @@ const _sfc_main = {
       app.globalData.utils.request({
         url: "/User/clients",
         success(res) {
-          console.log(res);
+          common_vendor.index.__f__("log", "at pages/clients/index.vue:70", res);
           clients.value = res.data.clients;
         }
       });
@@ -59,3 +59,4 @@ const _sfc_main = {
   }
 };
 wx.createPage(_sfc_main);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/clients/index.js.map

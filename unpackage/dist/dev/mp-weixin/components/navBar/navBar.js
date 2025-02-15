@@ -33,11 +33,20 @@ const _sfc_main = {
       default: false
     }
   },
-  setup(__props) {
+  emits: ["navBarAttached"],
+  setup(__props, { emit: __emit }) {
     const props = __props;
+    const emits = __emit;
     common_vendor.onBeforeMount(() => {
       setNavSize();
       setStyle();
+      emits("navBarAttached", {
+        detail: {
+          statusHeight: status.value,
+          navHeight: navHeight.value,
+          navBarHeight: status.value + navHeight.value
+        }
+      });
     });
     const status = common_vendor.ref(0);
     const navHeight = common_vendor.ref(0);
@@ -48,14 +57,17 @@ const _sfc_main = {
     const iconStyle = common_vendor.ref("");
     const menu = common_vendor.reactive(common_vendor.index.getMenuButtonBoundingClientRect());
     const setNavSize = () => {
-      const { system, statusBarHeight } = common_vendor.index.getSystemInfoSync();
+      const {
+        system,
+        statusBarHeight
+      } = common_vendor.index.getSystemInfoSync();
       status.value = statusBarHeight * 2;
       const isIOS = system.indexOf("IOS") > -1;
       if (!isIOS) {
         navHeight.value = 96;
-        console.log("安卓系统");
+        common_vendor.index.__f__("log", "at components/navBar/navBar.vue:101", "安卓系统");
       }
-      console.log("苹果系统");
+      common_vendor.index.__f__("log", "at components/navBar/navBar.vue:103", "苹果系统");
       navHeight.value = 88;
     };
     const setStyle = () => {
@@ -82,7 +94,7 @@ const _sfc_main = {
       } : common_vendor.e({
         e: pages.value > 1
       }, pages.value > 1 ? {
-        f: common_assets._imports_0$2
+        f: common_assets._imports_0$6
       } : {
         g: common_assets._imports_1$1
       }, {
@@ -98,3 +110,4 @@ const _sfc_main = {
   }
 };
 wx.createComponent(_sfc_main);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/components/navBar/navBar.js.map

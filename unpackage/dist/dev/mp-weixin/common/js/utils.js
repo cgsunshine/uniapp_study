@@ -8,14 +8,14 @@ class Utils {
   getUserInfo() {
     common_vendor.index.login({
       success: (res) => {
-        console.log(res);
+        common_vendor.index.__f__("log", "at common/js/utils.js:10", res);
         this.request({
           url: "/auth/wxLogin",
           data: {
             code: res.code
           },
           success: (res2) => {
-            console.log(res2, "res");
+            common_vendor.index.__f__("log", "at common/js/utils.js:17", res2, "res");
           }
         });
       }
@@ -49,7 +49,7 @@ class Utils {
         }
       },
       fail: (res) => {
-        console.log(res);
+        common_vendor.index.__f__("log", "at common/js/utils.js:51", res);
         common_vendor.index.hideLoading();
       }
     });
@@ -74,3 +74,4 @@ class Utils {
 }
 const Utils$1 = new Utils();
 exports.Utils = Utils$1;
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/common/js/utils.js.map

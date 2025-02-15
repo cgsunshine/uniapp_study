@@ -11,10 +11,11 @@
 			console.log('App Hide')
 		},
 		globalData: {
-			utils: Utils
+			utils: Utils,
+			orders_filt:''
 		}
 	}
-	//测试git
+
 </script>
 
 <style>

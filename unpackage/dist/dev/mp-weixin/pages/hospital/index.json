@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-bar": "../../components/navBar/navBar",
+    "share": "../../components/share/share"
+  }
 }

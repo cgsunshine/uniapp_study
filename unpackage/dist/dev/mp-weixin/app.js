@@ -10,24 +10,26 @@ if (!Math) {
   "./pages/hospital/index.js";
   "./pages/service/index.js";
   "./pages/clients/index.js";
+  "./pages/order/order.js";
 }
 const _sfc_main = {
   onLaunch: function() {
-    console.log("App Launch");
+    common_vendor.index.__f__("log", "at App.vue:5", "App Launch");
   },
   onShow: function() {
-    console.log("App Show");
+    common_vendor.index.__f__("log", "at App.vue:8", "App Show");
   },
   onHide: function() {
-    console.log("App Hide");
+    common_vendor.index.__f__("log", "at App.vue:11", "App Hide");
   },
   globalData: {
-    utils: common_js_utils.Utils
+    utils: common_js_utils.Utils,
+    orders_filt: ""
   }
 };
 Date.prototype.VP_FORMAT = function(format) {
-  console.log("==========>this.getDate() " + this.getTime() / (24 * 60 * 60 * 1e3));
-  console.log("==========>new Date().getDate() " + (/* @__PURE__ */ new Date()).getTime() / (24 * 60 * 60 * 1e3));
+  common_vendor.index.__f__("log", "at main.js:4", "==========>this.getDate() " + this.getTime() / (24 * 60 * 60 * 1e3));
+  common_vendor.index.__f__("log", "at main.js:5", "==========>new Date().getDate() " + (/* @__PURE__ */ new Date()).getTime() / (24 * 60 * 60 * 1e3));
   var ds = parseInt(this.getTime() / (24 * 60 * 60 * 1e3)) - parseInt((/* @__PURE__ */ new Date()).getTime() / (24 * 60 * 60 * 1e3));
   var n = "";
   if (ds == 0) {
@@ -73,3 +75,4 @@ function createApp() {
 }
 createApp().app.mount("#app");
 exports.createApp = createApp;
+//# sourceMappingURL=../.sourcemap/mp-weixin/app.js.map

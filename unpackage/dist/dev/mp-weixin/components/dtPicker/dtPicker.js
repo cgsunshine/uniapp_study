@@ -219,7 +219,7 @@ const _sfc_main = {
         return day + " " + hour + ":" + second;
       }
     };
-    console.log(props, "props");
+    common_vendor.index.__f__("log", "at components/dtPicker/dtPicker.vue:215", props, "props");
     common_vendor.watch(props.timestamp, (nd) => {
       timestampChange(nd);
     }, { immediate: true });
@@ -236,3 +236,4 @@ const _sfc_main = {
   }
 };
 wx.createComponent(_sfc_main);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/components/dtPicker/dtPicker.js.map
